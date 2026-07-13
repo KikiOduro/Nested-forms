@@ -29,7 +29,6 @@ const PersonalForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // handles the Resident checkbox separately since it uses "checked" not "value"
   const handleCheckboxChange = (e) => {
     setFormData({ ...formData, resident: e.target.checked });
   };
@@ -39,7 +38,6 @@ const PersonalForm = () => {
     const file = e.target.files[0];
     setFormData({ ...formData, profilePicture: file });
   };
-
   return (
     <form>
       <Row className="align-items-start">
@@ -104,6 +102,7 @@ const PersonalForm = () => {
                   <option value="">Select Gender</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
+                  <option value ="Other"> Other</option>
                 </Input>
               </FormGroup>
             </Col>
@@ -210,6 +209,7 @@ const PersonalForm = () => {
                   <option value="">Select Nationality</option>
                   <option value="Ghanaian">Ghanaian</option>
                   <option value="Nigerian">Nigerian</option>
+                  <option value="Togolese">Togolese</option>
                 </Input>
               </FormGroup>
             </Col>
