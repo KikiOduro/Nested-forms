@@ -3,9 +3,9 @@ import { Nav, NavItem, NavLink, TabContent, TabPane, Button } from "reactstrap";
 import { FaTimes, FaRedo, FaSave } from "react-icons/fa";
 import PersonalForm from "./PersonalForm";
 import OrganizationalForm from "./OrganizationalForm";
-import PaymentInfoForm from "./PaymentInfoForm";
+// import PaymentInfoForm from "./PaymentInfoForm";
 import OtherInfoForm from "./OtherInfoForm";
-import GeneralLedgerForm from "./GeneralLedgerForm";
+// import GeneralLedgerForm from "./GeneralLedgerForm";
 import "./components/EmployeeForm.css";
 
 const AddEmployeeDetails = () => {
@@ -81,15 +81,15 @@ const AddEmployeeDetails = () => {
         <TabPane tabId="organizational">
           <OrganizationalForm key={resetKey} />
         </TabPane>
-        <TabPane tabId="payment">
+        {/* <TabPane tabId="payment">
           <PaymentInfoForm key={resetKey} />
-        </TabPane>
+        </TabPane> */}
         <TabPane tabId="other">
           <OtherInfoForm key={resetKey} />
         </TabPane>
-        <TabPane tabId="ledger">
+        {/* <TabPane tabId="ledger">
           <GeneralLedgerForm key={resetKey} />
-        </TabPane>
+        </TabPane> */}
       </TabContent>
 
       {/* Footer note + buttons */}
