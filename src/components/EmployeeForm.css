@@ -1,0 +1,107 @@
+
+.employee-form-wrapper {
+  background-color: #ffffff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border: none;
+  width: 95%;
+  max-width: 1600px;
+  min-width: 1100px;
+  margin: 20px auto;
+}
+
+/* ===== Header bar ===== */
+.form-header {
+  background-color: #2c5f7c;
+  padding: 16px 24px;
+}
+
+.form-header h5 {
+  color: #ffffff;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* ===== Tabs ===== */
+.employee-tabs {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0 24px;
+  min-height: 50px;
+}
+
+.employee-tabs .nav-link {
+  border: none;
+  color: #2c7be5;
+  padding: 14px 18px;
+  font-size: 15px;
+  cursor: pointer;
+  background: none;
+}
+
+.employee-tabs .nav-link:hover {
+  color: #1a5db8;
+}
+
+.employee-tabs .nav-link.active {
+  background-color: #f2f2f2;
+  color: #333333;
+  border-radius: 4px 4px 0 0;
+  font-weight: 500;
+}
+
+/* keeps tab content area a consistent minimum height across all tabs */
+.tab-content {
+  min-height: 600px;
+}
+
+/* ===== Footer ===== */
+.form-footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* ===== Buttons ===== */
+.btn-cancel {
+  background-color: #5f6368;
+  border-color: #5f6368;
+  color: #ffffff;
+}
+.btn-cancel:hover {
+  background-color: #4a4e52;
+  border-color: #4a4e52;
+  color: #ffffff;
+}
+
+.btn-reset {
+  background-color: #f0a500;
+  border-color: #f0a500;
+  color: #ffffff;
+}
+.btn-reset:hover {
+  background-color: #d69200;
+  border-color: #d69200;
+  color: #ffffff;
+}
+
+.btn-save {
+  background-color: #2c5f7c;
+  border-color: #2c5f7c;
+  color: #ffffff;
+}
+.btn-save:hover {
+  background-color: #234a63;
+  border-color: #234a63;
+  color: #ffffff;
+}
+
+/* ===== Form fields: make sure they never shrink below a usable width ===== */
+.employee-form-wrapper input,
+.employee-form-wrapper select {
+  min-width: 100%;
+}
+
+/* stops textareas from being manually dragged/resized by the user */
+.employee-form-wrapper textarea {
+  resize: none;
+}

@@ -1,5 +1,17 @@
 import { useState } from "react";
-import { Row, Col, FormGroup, Label, Input, Button } from "reactstrap";
+import {
+  Row,
+  Col,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+  InputGroup,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap";
 import { FaCamera } from "react-icons/fa";
 
 const PersonalForm = () => {
@@ -17,6 +29,7 @@ const PersonalForm = () => {
     nationalId: "",
     resident: false,
     email: "",
+    phoneCountry: "GH", // default to Ghana flag, matches the screenshot
     phone: "",
     digitalAddress: "",
     homeAddress: "",
@@ -38,16 +51,31 @@ const PersonalForm = () => {
     const file = e.target.files[0];
     setFormData({ ...formData, profilePicture: file });
   };
+
+  const [flagDropdownOpen, setFlagDropdownOpen] = useState(false);
+
+
+  const toggleFlagDropdown = () => setFlagDropdownOpen(!flagDropdownOpen);
+
+  const handleCountrySelect = (countryCode) => {
+    setFormData({ ...formData, phoneCountry: countryCode });
+    setFlagDropdownOpen(false); // close the dropdown after picking
+  };
+
   return (
     <form>
       <Row className="align-items-start">
-        {/* LEFT SIDE */}
         <Col md={6}>
           <Row>
             <Col md={4}>
               <FormGroup>
                 <Label>Title</Label>
-                <Input type="select" name="title" value={formData.title} onChange={handleChange}>
+                <Input
+                  type="select"
+                  name="title"
+                  value={formData.title}
+                  onChange={handleChange}
+                >
                   <option value="">Select Title</option>
                   <option value="Mr">Mr</option>
                   <option value="Mrs">Mrs</option>
@@ -58,7 +86,9 @@ const PersonalForm = () => {
             </Col>
             <Col md={4}>
               <FormGroup>
-                <Label>First Name<span className="text-danger">*</span></Label>
+                <Label>
+                  First Name<span className="text-danger">*</span>
+                </Label>
                 <Input
                   type="text"
                   name="firstName"
@@ -70,7 +100,9 @@ const PersonalForm = () => {
             </Col>
             <Col md={4}>
               <FormGroup>
-                <Label>Last name<span className="text-danger">*</span></Label>
+                <Label>
+                  Last name<span className="text-danger">*</span>
+                </Label>
                 <Input
                   type="text"
                   name="lastName"
@@ -97,18 +129,27 @@ const PersonalForm = () => {
             </Col>
             <Col md={4}>
               <FormGroup>
-                <Label>Gender<span className="text-danger">*</span></Label>
-                <Input type="select" name="gender" value={formData.gender} onChange={handleChange}>
+                <Label>
+                  Gender<span className="text-danger">*</span>
+                </Label>
+                <Input
+                  type="select"
+                  name="gender"
+                  value={formData.gender}
+                  onChange={handleChange}
+                >
                   <option value="">Select Gender</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
-                  <option value ="Other"> Other</option>
+                  <option value="Other">Other</option>
                 </Input>
               </FormGroup>
             </Col>
             <Col md={4}>
               <FormGroup>
-                <Label>Date Of Birth<span className="text-danger">*</span></Label>
+                <Label>
+                  Date Of Birth<span className="text-danger">*</span>
+                </Label>
                 <Input
                   type="date"
                   name="dateOfBirth"
@@ -122,8 +163,15 @@ const PersonalForm = () => {
           <Row>
             <Col md={4}>
               <FormGroup>
-                <Label>Marital<span className="text-danger">*</span></Label>
-                <Input type="select" name="marital" value={formData.marital} onChange={handleChange}>
+                <Label>
+                  Marital<span className="text-danger">*</span>
+                </Label>
+                <Input
+                  type="select"
+                  name="marital"
+                  value={formData.marital}
+                  onChange={handleChange}
+                >
                   <option value="">Select Marital</option>
                   <option value="Single">Single</option>
                   <option value="Married">Married</option>
@@ -134,12 +182,14 @@ const PersonalForm = () => {
           </Row>
 
           <hr />
-          <h6 className="text-center mb-3">Contact Info</h6>
+          <h6 className="text-start mb-3">Contact Info</h6>
 
           <Row>
             <Col md={4}>
               <FormGroup>
-                <Label>Email Address<span className="text-danger">*</span></Label>
+                <Label>
+                  Email Address<span className="text-danger">*</span>
+                </Label>
                 <Input
                   type="email"
                   name="email"
@@ -151,14 +201,60 @@ const PersonalForm = () => {
             </Col>
             <Col md={4}>
               <FormGroup>
-                <Label>Phone<span className="text-danger">*</span></Label>
-                <Input
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                />
+                <Label>
+                  Phone<span className="text-danger">*</span>
+                </Label>
+                <InputGroup>
+                  <Dropdown
+                    isOpen={flagDropdownOpen}
+                    toggle={toggleFlagDropdown}
+                  >
+                    <DropdownToggle
+                      caret
+                      className="bg-white border d-flex align-items-center"
+                    >
+                      <img
+                        src={`https://flagcdn.com/24x18/${formData.phoneCountry.toLowerCase()}.png`}
+                        alt={formData.phoneCountry}
+                        style={{ width: "22px", height: "16px" }}
+                      />
+                    </DropdownToggle>
+                    <DropdownMenu>
+                      <DropdownItem onClick={() => handleCountrySelect("GH")}>
+                        <img
+                          src="https://flagcdn.com/24x18/gh.png"
+                          alt="Ghana"
+                          className="me-2"
+                        />
+                        Ghana
+                      </DropdownItem>
+                      <DropdownItem onClick={() => handleCountrySelect("NG")}>
+                        <img
+                          src="https://flagcdn.com/24x18/ng.png"
+                          alt="Nigeria"
+                          className="me-2"
+                        />
+                        Nigeria
+                      </DropdownItem>
+                      <DropdownItem onClick={() => handleCountrySelect("TG")}>
+                        <img
+                          src="https://flagcdn.com/24x18/tg.png"
+                          alt="Togo"
+                          className="me-2"
+                        />
+                        Togo
+                      </DropdownItem>
+                    </DropdownMenu>
+                  </Dropdown>
+
+                  <Input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
+                </InputGroup>
               </FormGroup>
             </Col>
             <Col md={4}>
@@ -188,13 +284,20 @@ const PersonalForm = () => {
           </FormGroup>
         </Col>
 
-        {/* RIGHT SIDE */}
+   
         <Col md={6} className="border-start ps-4">
           <Row>
             <Col md={6}>
               <FormGroup>
-                <Label>Country<span className="text-danger">*</span></Label>
-                <Input type="select" name="country" value={formData.country} onChange={handleChange}>
+                <Label>
+                  Country<span className="text-danger">*</span>
+                </Label>
+                <Input
+                  type="select"
+                  name="country"
+                  value={formData.country}
+                  onChange={handleChange}
+                >
                   <option value="">Select Country</option>
                   <option value="Ghana">Ghana</option>
                   <option value="Nigeria">Nigeria</option>
@@ -204,8 +307,15 @@ const PersonalForm = () => {
             </Col>
             <Col md={6}>
               <FormGroup>
-                <Label>Nationality<span className="text-danger">*</span></Label>
-                <Input type="select" name="nationality" value={formData.nationality} onChange={handleChange}>
+                <Label>
+                  Nationality<span className="text-danger">*</span>
+                </Label>
+                <Input
+                  type="select"
+                  name="nationality"
+                  value={formData.nationality}
+                  onChange={handleChange}
+                >
                   <option value="">Select Nationality</option>
                   <option value="Ghanaian">Ghanaian</option>
                   <option value="Nigerian">Nigerian</option>
@@ -236,21 +346,29 @@ const PersonalForm = () => {
                   checked={formData.resident}
                   onChange={handleCheckboxChange}
                 />
-                <Label check for="resident">Resident</Label>
+                <Label check for="resident">
+                  Resident
+                </Label>
               </FormGroup>
             </Col>
           </Row>
 
           <hr />
-          <h6 className="text-center mb-3">Employee Image</h6>
+          <h6 className="text-start mb-3">Employee Image</h6>
 
           <FormGroup>
             <Label>Profile Picture</Label>
             <div>
-              <Button color="primary" tag="label" htmlFor="profilePicUpload" className="mb-0">
+              <Button
+                color="#9ccf19"
+                tag="label"
+                htmlFor="profilePicUpload"
+                className="mb-0"
+              >
                 <FaCamera className="me-2" /> Upload Image
               </Button>
               <Input
+                color="#224159"
                 type="file"
                 id="profilePicUpload"
                 accept="image/*"

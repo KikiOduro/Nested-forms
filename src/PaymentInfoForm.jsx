@@ -82,7 +82,7 @@ const PaymentInfoForm = () => {
     <div>
       {/* Add Option button */}
       <div className="d-flex justify-content-end mb-3">
-        <Button color="primary" onClick={openModal}>
+        <Button color ="#2c5f7c;" onClick={openModal}>
           <FaPlus className="me-1" /> Add Option
         </Button>
       </div>

@@ -6,24 +6,18 @@ import OrganizationalForm from "./OrganizationalForm";
 import PaymentInfoForm from "./PaymentInfoForm";
 import OtherInfoForm from "./OtherInfoForm";
 import GeneralLedgerForm from "./GeneralLedgerForm";
+import "./components/EmployeeForm.css";
 
 const AddEmployeeDetails = () => {
-  // keeps track of which tab is currently active
   const [activeTab, setActiveTab] = useState("personal");
-
-  // this number changes every time Reset is clicked
-  // giving each form a new "key" forces React to rebuild it from scratch,
-  // which clears out whatever the user had typed
   const [resetKey, setResetKey] = useState(0);
 
-  // switches the tab when a nav link is clicked
   const toggleTab = (tab) => {
     if (activeTab !== tab) {
       setActiveTab(tab);
     }
   };
 
-  // called when the Reset button is clicked
   const handleReset = () => {
     setResetKey(resetKey + 1);
   };
@@ -99,18 +93,18 @@ const AddEmployeeDetails = () => {
       </TabContent>
 
       {/* Footer note + buttons */}
-      <div className="form-footer d-flex justify-content-between align-items-center p-3 border-top">
+      <div className="form-footer d-flex justify-content-between align-items-center p-3">
         <small className="text-muted fst-italic">
           All fields marked with asterisk are required (*)
         </small>
         <div>
-          <Button color="secondary" className="me-2">
+          <Button className="btn-cancel me-2">
             <FaTimes className="me-1" /> Cancel
           </Button>
-          <Button color="warning" className="me-2 text-white" onClick={handleReset}>
+          <Button className="btn-reset me-2" onClick={handleReset}>
             <FaRedo className="me-1" /> Reset
           </Button>
-          <Button color="primary">
+          <Button className="btn-save">
             <FaSave className="me-1" /> Save
           </Button>
         </div>
