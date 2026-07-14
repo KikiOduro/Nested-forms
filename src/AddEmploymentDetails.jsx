@@ -5,7 +5,7 @@ import PersonalForm from "./PersonalForm";
 import OrganizationalForm from "./OrganizationalForm";
 import PaymentInfoForm from "./PaymentInfoForm";
 import OtherInfoForm from "./OtherInfoForm";
-// import GeneralLedgerForm from "./GeneralLedgerForm";
+import GeneralLedgerForm from "./GeneralLedgerForm";
 import "./components/EmployeeForm.css";
 
 const AddEmployeeDetails = () => {
@@ -87,9 +87,9 @@ const AddEmployeeDetails = () => {
         <TabPane tabId="other">
           <OtherInfoForm key={resetKey} />
         </TabPane>
-        {/* <TabPane tabId="ledger">
+        <TabPane tabId="ledger">
           <GeneralLedgerForm key={resetKey} />
-        </TabPane> */}
+        </TabPane>
       </TabContent>
 
       {/* Footer note + buttons */}
