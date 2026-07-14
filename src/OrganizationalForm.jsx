@@ -14,7 +14,7 @@ const OrganizationalForm = () => {
     unit: "",
     location: "",
     taxOption: "",
-    employmentOption: "Permanent", // matches the screenshot's default value
+    employmentOption: "Permanent", 
     overtimeExempt: false,
     salaryGrade: "",
     notch: "",
@@ -25,29 +25,25 @@ const OrganizationalForm = () => {
     maxRate: 0,
   });
 
-  // handles every normal text/select input
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // handles the Overtime Exempt checkbox
   const handleCheckboxChange = (e) => {
     setFormData({ ...formData, overtimeExempt: e.target.checked });
   };
 
-  // when Salary Grade changes, we could auto-fill Notch/Currency/Salary Type/Min/Max
-  // for now we just enable the fields once a grade is picked
   const handleSalaryGradeChange = (e) => {
     const value = e.target.value;
     setFormData({ ...formData, salaryGrade: value });
-    // later: fetch notch options, currency, salary type, min/max from backend here
+  
   };
 
   return (
     <form>
       <Row className="align-items-start">
-        {/* LEFT SIDE */}
+        {/* Left part */}
         <Col md={6}>
           <Row>
             <Col md={6}>
@@ -95,9 +91,9 @@ const OrganizationalForm = () => {
                 <Label>Department<span className="text-danger">*</span></Label>
                 <Input type="select" name="department" value={formData.department} onChange={handleChange}>
                   <option value="">Select Department</option>
-                  <option value="Operations">Operations</option>
+                  <option value="Software">Software</option>
                   <option value="Sales">Sales</option>
-                  <option value="Engineering">Engineering</option>
+                  <option value="Consulting"> Consulting</option>
                 </Input>
               </FormGroup>
             </Col>
@@ -163,7 +159,7 @@ const OrganizationalForm = () => {
           </Row>
         </Col>
 
-        {/* RIGHT SIDE */}
+        {/* Right part */}
         <Col md={6} className="border-start ps-4">
           <Row>
             <Col md={4}>
@@ -227,7 +223,6 @@ const OrganizationalForm = () => {
             <Col md={6}>
               <FormGroup>
                 <Label>Notch</Label>
-                {/* disabled until a Salary Grade is picked, just like the screenshot */}
                 <Input
                   type="select"
                   name="notch"

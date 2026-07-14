@@ -29,14 +29,13 @@ const PersonalForm = () => {
     nationalId: "",
     resident: false,
     email: "",
-    phoneCountry: "GH", // default to Ghana flag, matches the screenshot
+    phoneCountry: "GH", 
     phone: "",
     digitalAddress: "",
     homeAddress: "",
     profilePicture: null,
   });
 
-  // handles typing in text inputs and selecting dropdown options
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -46,7 +45,6 @@ const PersonalForm = () => {
     setFormData({ ...formData, resident: e.target.checked });
   };
 
-  // handles the image upload
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     setFormData({ ...formData, profilePicture: file });
@@ -54,12 +52,11 @@ const PersonalForm = () => {
 
   const [flagDropdownOpen, setFlagDropdownOpen] = useState(false);
 
-
   const toggleFlagDropdown = () => setFlagDropdownOpen(!flagDropdownOpen);
 
   const handleCountrySelect = (countryCode) => {
     setFormData({ ...formData, phoneCountry: countryCode });
-    setFlagDropdownOpen(false); // close the dropdown after picking
+    setFlagDropdownOpen(false); 
   };
 
   return (
@@ -210,9 +207,9 @@ const PersonalForm = () => {
                     toggle={toggleFlagDropdown}
                   >
                     <DropdownToggle
-                      caret
-                      className="bg-white border d-flex align-items-center"
+                      caret className="bg-white border d-flex align-items-center"
                     >
+                      {/* using a cdn to host the image files */}
                       <img
                         src={`https://flagcdn.com/24x18/${formData.phoneCountry.toLowerCase()}.png`}
                         alt={formData.phoneCountry}
@@ -284,7 +281,6 @@ const PersonalForm = () => {
           </FormGroup>
         </Col>
 
-   
         <Col md={6} className="border-start ps-4">
           <Row>
             <Col md={6}>
@@ -357,14 +353,9 @@ const PersonalForm = () => {
           <h6 className="text-start mb-3">Employee Image</h6>
 
           <FormGroup>
-            <Label>Profile Picture</Label>
+            {/* <Label>Profile Picture</Label> */}
             <div>
-              <Button
-                color="#9ccf19"
-                tag="label"
-                htmlFor="profilePicUpload"
-                className="mb-0"
-              >
+              <Button >
                 <FaCamera className="me-2" /> Upload Image
               </Button>
               <Input
