@@ -1,8 +1,6 @@
 import { FormGroup, Label, InputGroup, Input, Button } from "reactstrap";
 import { FaTimes } from "react-icons/fa";
 
-// a single "Search GL" dropdown with a clear (X) button
-// we reuse this same component for all 12 GL fields on this page
 const GLSelectField = ({ label, name, value, onChange, onClear }) => {
   return (
     <FormGroup>

@@ -13,6 +13,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 import { FaCamera } from "react-icons/fa";
+import SectionDivider from "./components/SectionDivider";
 
 const PersonalForm = () => {
   // one object to hold all the form values
@@ -62,7 +63,7 @@ const PersonalForm = () => {
   return (
     <form>
       <Row className="align-items-start">
-        <Col md={6}>
+       <Col md={6} className="pe-4">
           <Row>
             <Col md={4}>
               <FormGroup>
@@ -178,8 +179,7 @@ const PersonalForm = () => {
             </Col>
           </Row>
 
-          <hr />
-          <h6 className="text-start mb-3">Contact Info</h6>
+          <SectionDivider title="Contact Info" alignment="center" />
 
           <Row>
             <Col md={4}>
@@ -281,7 +281,7 @@ const PersonalForm = () => {
           </FormGroup>
         </Col>
 
-        <Col md={6} className="border-start ps-4">
+        <Col md={6} className="section-split">
           <Row>
             <Col md={6}>
               <FormGroup>
@@ -334,7 +334,7 @@ const PersonalForm = () => {
                 />
               </FormGroup>
             </Col>
-            <Col md={6}>
+            <Col md={1}>
               <FormGroup check className="mt-4">
                 <Input
                   type="checkbox"
@@ -349,8 +349,7 @@ const PersonalForm = () => {
             </Col>
           </Row>
 
-          <hr />
-          <h6 className="text-start mb-3">Employee Image</h6>
+          <SectionDivider title="Employee Image" alignment="center" />
 
           <FormGroup>
             {/* <Label>Profile Picture</Label> */}

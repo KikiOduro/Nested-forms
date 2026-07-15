@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Row, Col, FormGroup, Label, Input } from "reactstrap";
+import SectionDivider from "./components/SectionDivider";
 
 const OtherInfoForm = () => {
   // holds all the values for this tab
@@ -27,8 +28,7 @@ const OtherInfoForm = () => {
       <Row>
         {/* LEFT SIDE */}
         <Col md={6}>
-          <hr />
-          <h6 className="text-center mb-3">Salary Info</h6>
+          <SectionDivider title="Salary Info" alignment="center" />
 
           <Row>
             <Col md={6}>
@@ -76,7 +76,7 @@ const OtherInfoForm = () => {
         </Col>
 
         {/* RIGHT SIDE stays empty, matching the screenshot's layout */}
-        <Col md={6} className="border-start ps-4"></Col>
+        <Col md={6} className="section-split"></Col>
       </Row>
     </form>
   );

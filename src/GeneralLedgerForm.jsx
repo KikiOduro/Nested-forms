@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Row, Col } from "reactstrap";
 import GLSelectField from "./GLSelectField";
+import SectionDivider from "./components/SectionDivider";
 
 const GeneralLedgerForm = () => {
   // one object holding all 12 GL fields across the 3 sections
@@ -38,8 +39,7 @@ const GeneralLedgerForm = () => {
       <Row className="align-items-start">
         {/* REGULAR SECTION */}
         <Col md={5}>
-          <hr />
-          <h6 className="text-center mb-3">Regular</h6>
+          <SectionDivider title="Regular" alignment="center" />
           <Row>
             <Col md={6}>
               <GLSelectField
@@ -91,9 +91,8 @@ const GeneralLedgerForm = () => {
         </Col>
 
         {/* MANDATORY SECTION */}
-        <Col md={3} className="border-start ps-4">
-          <hr />
-          <h6 className="text-center mb-3">Mandatory</h6>
+        <Col md={3} className="section-split">
+          <SectionDivider title="Mandatory" alignment="center" />
           <GLSelectField
             label="Employee Contribution GL"
             name="mandatoryEmployeeContribution"
@@ -119,8 +118,7 @@ const GeneralLedgerForm = () => {
 
         {/* VOLUNTARY SECTION */}
         <Col md={3}>
-          <hr />
-          <h6 className="text-center mb-3">Voluntary</h6>
+          <SectionDivider title="Voluntary" alignment="center" />
           <GLSelectField
             label="Employee Contribution GL"
             name="voluntaryEmployeeContribution"

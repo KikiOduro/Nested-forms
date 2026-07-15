@@ -19,6 +19,8 @@ const PaymentInfoForm = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [paymentOptions, setPaymentOptions] = useState([]);
 
+  const displayValue = (value) => value?.trim() || "";
+
   // holds every possible field across all payment types
   // only the relevant ones get shown/used depending on which option is picked
   const [newOption, setNewOption] = useState({
@@ -126,11 +128,11 @@ const PaymentInfoForm = () => {
             paymentOptions.map((option) => (
               <tr key={option.id}>
                 <td>{option.paymentOption}</td>
-                <td>{option.bank || option.serviceProvider || "-"}</td>
-                <td>{option.branch || "-"}</td>
-                <td>{option.accountNumber || "-"}</td>
-                <td>{option.paymentBasis || "-"}</td>
-                <td>{option.value || "-"}</td>
+                <td>{displayValue(option.bank || option.serviceProvider)}</td>
+                <td>{displayValue(option.branch)}</td>
+                <td>{displayValue(option.accountNumber)}</td>
+                <td>{displayValue(option.paymentBasis)}</td>
+                <td>{displayValue(option.value)}</td>
                 <td>{option.isDefault ? "Yes" : "No"}</td>
                 <td>
                   <Button
@@ -147,10 +149,9 @@ const PaymentInfoForm = () => {
         </tbody>
       </Table>
 
-      <Modal isOpen={modalOpen} toggle={closeModal} size="lg">
+      <Modal isOpen={modalOpen} toggle={closeModal} className="payment-modal" centered>
         <ModalHeader toggle={closeModal}>Add Payment Info</ModalHeader>
         <ModalBody>
-          
           <Row className="align-items-center mb-2">
             <Col md={6}>
               <FormGroup>
@@ -272,26 +273,15 @@ const PaymentInfoForm = () => {
                 </Col>
               </Row>
 
-              <Row>
-                <Col md={4}></Col>
-                <Col md={4}>
-                  <FormGroup>
-                    <Label>
-                    </Label>
-                  </FormGroup>
-                </Col>
-                <Col md={4}></Col>
-              </Row>
-
               <FormGroup>
                 <Label>Note</Label>
                 <Input
                   type="textarea"
                   name="note"
-                  placeholder="Note"
+                  placeholder="Add a note"
                   value={newOption.note}
                   onChange={handleModalChange}
-                  rows={3}
+                  rows={2}
                 />
               </FormGroup>
             </>
@@ -371,10 +361,10 @@ const PaymentInfoForm = () => {
                 <Input
                   type="textarea"
                   name="note"
-                  placeholder="Note"
+                  placeholder="Add a note"
                   value={newOption.note}
                   onChange={handleModalChange}
-                  rows={3}
+                  rows={2}
                 />
               </FormGroup>
             </>
@@ -421,10 +411,10 @@ const PaymentInfoForm = () => {
                 <Input
                   type="textarea"
                   name="note"
-                  placeholder="Note"
+                  placeholder="Add a note"
                   value={newOption.note}
                   onChange={handleModalChange}
-                  rows={3}
+                  rows={2}
                 />
               </FormGroup>
             </>

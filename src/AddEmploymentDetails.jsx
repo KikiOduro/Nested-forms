@@ -94,7 +94,7 @@ const AddEmployeeDetails = () => {
 
       {/* Footer note + buttons */}
       <div className="form-footer d-flex justify-content-between align-items-center p-3">
-        <small className="text-muted fst-italic">
+        <small className="required-note fst-italic">
           All fields marked with asterisk are required (*)
         </small>
         <div>
